@@ -254,3 +254,25 @@ def alg(arr):
     return max(arrays, key=lambda x: len(x))
 # while True:
 #     print("res =", alg(create()))
+def alg2(arr):
+    """нахождение возрастающей подпоследовательности максимальной длины с пропусками"""
+    print("array =",arr)
+    arrays = []
+    arrays.append(alg(arr))
+    for _ in arr:
+        sub_arr = []
+        for i in arr:
+            if not sub_arr:
+                sub_arr.append(i)
+                continue
+            if i >= sub_arr[-1]:
+                sub_arr.append(i)
+            else:
+                continue
+        arrays.append(sub_arr)
+    if len(arr) == 1: return arr
+    if not arrays or not arrays[0]: return []
+    return max(arrays, key=lambda x: len(x))
+# arr = create()
+# print(alg(arr))
+# print(alg2(arr))
